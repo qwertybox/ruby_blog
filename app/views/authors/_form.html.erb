@@ -1,0 +1,24 @@
+<%= form_with model: author do |form| %>  <!-- here we use local var article, evr tha same as new-->
+  <!--we will use shared view (partials) form-with - read!!-->
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% author.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :bio %><br>
+    <%= form.text_area :bio %><br>
+    <% author.errors.full_messages_for(:bio).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to "All Articles", articles_path %> <!--_url _path-->

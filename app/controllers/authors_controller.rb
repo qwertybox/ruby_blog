@@ -1,51 +1,51 @@
-class ArticlesController < ApplicationController
-  # here we will build GRUD
+class AuthorsController < ApplicationController
+
   def index # show all articles, start page
-    @articles = Article.all
+    @authors = Author.all
   end
 
   def show # show one article
-    @article = Article.find(params[:id])
+    @author = Author.find(params[:id])
   end
 
   def new # инициализирует новую статью, но не сохраняет ее
-    @article = Article.new
+    @author= Author.new
   end
 
   def edit #edit извлекает статью из базы данных и сохраняет ее в @article
-    @article = Article.find(params[:id]) # looks for article by ots id and loads it
+    @author = Author.find(params[:id]) # looks for article by ots id and loads it
     # why? чтобы можно было использовать при построении формы (default location: app/views/articles/edit.html.erb)
   end
 
   def update # update (пере)извлекает статью из базы данных и пытается обновить ее с помощью отправленных данных формы, фильтрованных в article_params
-    @article = Article.find(params[:id])
+    @author = Author.find(params[:id])
 
-    if @article.update(article_params) # если пройдет валидацию и сможет обновить артикл, то перенаправит на страницу этого артикла
-      redirect_to @article
+    if @author.update(author_params) # если пройдет валидацию и сможет обновить артикл, то перенаправит на страницу этого артикла
+      redirect_to @author
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def create # create инициализирует новую статью со значениями для заголовка и содержимого и пытается сохранить ее
-    @article = Article.new(article_params)
+    @author = Author.new(author_params)
 
-    if @article.save
-      redirect_to @article
+    if @author.save
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy # извлекает статью из базы данных, и вызывает destroy на ней.
-    @article = Article.find(params[:id])
-    @article.destroy
+    @author = Author.find(params[:id])
+    @author.destroy
 
     redirect_to root_path
   end
 
   private
-  def article_params
-    params.require(:article).permit(:title, :body, :author_id)
+  def author_params
+    params.require(:author).permit(:name, :bio)
   end
 end

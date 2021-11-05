@@ -1,0 +1,15 @@
+<h1>Authors</h1>
+
+<ul>
+  <% @authors.each do |author| %>
+    <li>
+      <%= link_to author.name, author %> <!-- helper link_to создает ссылку с первым аргументом в качестве текста ссылки и вторым аргументом в качестве адреса ссылки -->
+    </li>
+  <% end %>
+</ul>
+<div>
+  <%= link_to "Add author", new_author_path %>
+</div>
+<div>
+  <%= link_to "All articles", articles_path %>
+</div>
