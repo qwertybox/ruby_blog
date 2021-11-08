@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources  :articles #, only: %[] # заменяет два нижних маршрута так как включает их в себя и еще 5 only or except
   # get "/articles", to: "articles#index" # запросы GET /articles связываются с action index в ArticlesController
-  resources :authors, :except => [:show]
+  resources :authors
   # get "/articles/:id/sub_id", to: "articles#show" # get params
   # put patch
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
