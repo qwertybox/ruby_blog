@@ -2,6 +2,10 @@
 
 <p><%= @author.bio %></p>
 
+<% @articles.each do |article| %>
+    <%= article.title %> <!-- helper link_to создает ссылку с первым аргументом в качестве текста ссылки и вторым аргументом в качестве адреса ссылки -->
+<% end %>
+
 <!-- <li><%= link_to "Destroy", authors_path(@author),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %></li> -->

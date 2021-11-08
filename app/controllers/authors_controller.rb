@@ -6,6 +6,7 @@ class AuthorsController < ApplicationController
 
   def show # show one article
     @author = Author.find(params[:id])
+    @articles = @author.articles
   end
 
   def new # инициализирует новую статью, но не сохраняет ее
