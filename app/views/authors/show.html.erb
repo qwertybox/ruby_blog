@@ -1,13 +1,15 @@
 <h1><%= @author.name %></h1>
 
 <p><%= @author.bio %></p>
+<p>All authors articles</p>
+<ul><% @articles.each do |article| %>
 
-<% @articles.each do |article| %>
-    <%= article.title %> <!-- helper link_to создает ссылку с первым аргументом в качестве текста ссылки и вторым аргументом в качестве адреса ссылки -->
-<% end %>
+    <li><%= link_to article.title, article_path(article) %></li>  <!-- helper link_to создает ссылку с первым аргументом в качестве текста ссылки и вторым аргументом в качестве адреса ссылки -->
+  <% end %></ul>
 
 <!-- <li><%= link_to "Destroy", authors_path(@author),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %></li> -->
 
+<li><%= link_to 'Back', :back %></li>
 <li><%= link_to "All Authors", authors_path %></li>
