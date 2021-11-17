@@ -5,6 +5,7 @@ ruby '3.0.2'
 
 gem 'activeadmin', '~> 2.9.0'
 gem 'bcrypt', '~> 3.1.16'
+gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
 gem "standard", group: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

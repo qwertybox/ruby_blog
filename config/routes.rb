@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get '/*other', to: 'application#not_found'
   if Rails.env.production?
     get '404', :to => 'application#page_not_found'
   end
