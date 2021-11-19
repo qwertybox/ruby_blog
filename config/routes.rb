@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'articles#index' # set default page at localhost:3000
@@ -10,9 +11,6 @@ Rails.application.routes.draw do
   end
 
   get '/*other', to: 'application#not_found'
-  if Rails.env.production?
-    get '404', :to => 'application#page_not_found'
-  end
   # get "/articles", to: "articles#index" # запросы GET /articles связываются с action index в ArticlesController
   # get "/articles/:id/sub_id", to: "articles#show" # get params
   # get "/authors/", to: ""

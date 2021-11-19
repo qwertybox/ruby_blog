@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-
+  before_action :authenticate_user!
   def index # show all articles, start page
     @authors = Author.all
   end

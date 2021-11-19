@@ -19,7 +19,6 @@
   <div>
     <%= form.label :author %><br> <!-- we use method -->
     <%= form.collection_select :author_id, Author.all, :id, :name, {:prompt => 'Please select the author of this article'} %>
-    <%= p  form.collection_select :author_id, Author.all, :id, :name%>>
     <% article.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
     <% end %>

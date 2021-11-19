@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   # here we will build GRUD
+  before_action :authenticate_user!, except: [:index, :show]
   def index # show all articles, start page
     @articles = Article.all
   end
