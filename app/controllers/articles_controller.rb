@@ -7,6 +7,8 @@ class ArticlesController < ApplicationController
 
   def show # show one article
     @article = Article.find(params[:id])
+    @article.add_like
+    @article.add_visit
   end
 
   def new # инициализирует новую статью, но не сохраняет ее
