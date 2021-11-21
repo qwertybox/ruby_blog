@@ -1,17 +1,25 @@
+# frozen_string_literal: true
+
+# sort top articles based on their index
 class RangeArticlesService
   def call(author_id)
-    author = Author.find(author_id)
-    articles = author.articles
-    sort_articles articles
+    author_articles = find_articles author_id
+    sort_articles author_articles
   end
 
   private
-  def sort_articles articles
-    #articles.each do |article|
-    #  index = (article.likes**2 + article.visits**2)**0.5
-    #   article.index = index
-    #end
-    articles.sort {|b,a| (a.likes**2 + a.visits**2)**0.5 <=> (b.likes**2 + b.visits**2)**0.5 }
+
+  def find_articles(author_id)
+    author = Author.find(author_id)
+    author.articles
+  end
+
+  def sort_articles(articles)
+    articles.sort { |b, a| find_index(a) <=> find_index(b) }
+  end
+
+  def find_index(article)
+    (article.likes**2 + article.visits**2)**0.5
   end
 
 end
