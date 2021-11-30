@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :author
-  has_many :comments
+  has_many :comments, dependent: :destroy
   after_initialize :init
 
   def init

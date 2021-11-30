@@ -4,13 +4,16 @@ class AuthorsController < ApplicationController
     @authors = Author.all
   end
 
-  def show # show one article
+  def show # show one author
     @author = Author.find(params[:id])
-    @articles = @author.articles
+    # @articles = @author.articles
+    #RangeArticlesWorker.perform_async(params[:id])
+    #sleep(2)
+    @articles = RangeArticlesService.new(params[:id]).call
   end
 
   def new # инициализирует новую статью, но не сохраняет ее
-    @author= Author.new
+    @author = Author.new
   end
 
   def edit #edit извлекает статью из базы данных и сохраняет ее в @article
@@ -46,6 +49,7 @@ class AuthorsController < ApplicationController
   end
 
   private
+
   def author_params
     params.require(:author).permit(:name, :bio)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_125129) do
+ActiveRecord::Schema.define(version: 2021_11_19_200357) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_11_19_125129) do
     t.integer "visits"
     t.integer "Like"
     t.integer "likes"
+    t.integer "index"
     t.index ["author_id"], name: "index_articles_on_author_id"
   end
 

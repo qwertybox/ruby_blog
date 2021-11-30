@@ -7,9 +7,12 @@ gem 'activeadmin', '~> 2.9.0'
 gem 'bcrypt', '~> 3.1.16'
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
+gem 'sidekiq'
+gem 'sidekiq-statistic'
 gem "standard", group: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'redis'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -22,6 +25,7 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
+  mount Sidekiq::Web => '/sidekiq'
+
   ActiveAdmin.routes(self)
   root 'articles#index' # set default page at localhost:3000
 
@@ -9,6 +13,8 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  post '/generate', to: 'articles#activity'
 
   get '/*other', to: 'application#not_found'
   # get "/articles", to: "articles#index" # запросы GET /articles связываются с action index в ArticlesController

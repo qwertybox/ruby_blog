@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ArticlesController < ApplicationController
   # here we will build GRUD
   before_action :authenticate_user!, except: [:index, :show]
@@ -24,7 +25,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params) # если пройдет валидацию и сможет обновить артикл, то перенаправит на страницу этого артикла
-      redirect_to @article
+      redirect_to @article, notice: 'article updated!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +35,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to @article, notice: 'article saved!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +48,16 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def activity
+    # articles = Article.all
+    @jid = FakeActivityWorker.set(queue: 'normal').perform_async
+    # FakeActivityService.new(articles).call
+    #sleep(1)
+    redirect_to root_path
+  end
+
   private
+
   def article_params
     params.require(:article).permit(:title, :body, :author_id)
   end

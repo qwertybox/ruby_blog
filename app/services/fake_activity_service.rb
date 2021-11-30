@@ -2,8 +2,15 @@
 
 # service for generation of fake likes and visits of articles
 class FakeActivityService
-  def call(articles)
-    generate_activity articles
+  attr_reader :articles
+
+  def initialize(articles)
+    @articles = articles
+  end
+
+  def call
+    generate_activity
+    sleep(5)
   end
 
   private
@@ -12,7 +19,7 @@ class FakeActivityService
     rand(num)
   end
 
-  def generate_activity(articles)
+  def generate_activity
     articles.each do |article|
       generate_like article, gen_rand
       generate_visit article, gen_rand
