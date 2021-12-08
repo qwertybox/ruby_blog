@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   post '/generate', to: 'articles#activity'
-
+  post '/update_lv', to: 'articles#update_lv'
   get '/*other', to: 'application#not_found'
   # get "/articles", to: "articles#index" # запросы GET /articles связываются с action index в ArticlesController
   # get "/articles/:id/sub_id", to: "articles#show" # get params

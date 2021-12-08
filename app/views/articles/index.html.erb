@@ -14,4 +14,6 @@
 
 <li><%= link_to "New Article", new_article_path %></li>
 <li><%= link_to "All authors", authors_path %></li>
+<button id="button">Refresh values</button>
 <%= button_to "Generate Activity", '/generate' %>
+<%= javascript_pack_tag 'function1'%>

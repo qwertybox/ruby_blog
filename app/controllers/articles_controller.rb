@@ -53,7 +53,16 @@ class ArticlesController < ApplicationController
     @jid = FakeActivityWorker.set(queue: 'normal').perform_async
     # FakeActivityService.new(articles).call
     #sleep(1)
-    redirect_to root_path
+    @articles = Article.all
+
+    # redirect_to root_path
+  end
+
+  def update_lv
+    respond_to do |format|
+      format.html
+      format.json { render json: UpdateLikesVisitsService.new.call }
+    end
   end
 
   private
